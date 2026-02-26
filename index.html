@@ -380,24 +380,34 @@
         .card,
         .envelope::before {
             will-change: transform;
-        }
+            
+        }.container {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
+   <script>
+document.addEventListener("DOMContentLoaded", function () {
 
-            const container = document.querySelector(".container");
-            const card = document.querySelector(".card");
+    const container = document.querySelector(".container");
+    const card = document.querySelector(".card");
 
-            container.addEventListener("mouseenter", () => {
-                card.classList.add("open");
-            });
+    // Desktop hover
+    container.addEventListener("mouseenter", () => {
+        card.classList.add("open");
+    });
 
-            container.addEventListener("mouseleave", () => {
-                card.classList.remove("open");
-            });
+    container.addEventListener("mouseleave", () => {
+        card.classList.remove("open");
+    });
 
-        });
-    </script>
+    // Mobile tap support
+    container.addEventListener("click", () => {
+        card.classList.toggle("open");
+    });
+
+});
+</script>
 </head>
 
 <body>
